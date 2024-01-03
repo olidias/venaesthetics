@@ -1,0 +1,29 @@
+---
+import { buildClient, LogLevel } from '@datocms/cma-client-node';
+import { getLangFromUrl, useTranslations } from '../data/utils';
+
+const client = buildClient({ 
+    apiToken: import.meta.env.DATO_CMS_API_KEY,
+    logLevel: LogLevel.BASIC,
+ });
+
+ const lang = getLangFromUrl(Astro.url);
+ const records = await client.items.list({
+    filter: {
+      // you can also use models IDs instead of API keys!
+      type: 'teaser',
+    },
+    locale: lang
+  });
+const teaser = records[0].content[lang];
+
+const t = useTranslations(lang);
+---
+<div class="mt-28">
+    <img src="/logo-full.svg" alt="large logo venaesthetics" />
+    <div class="flex justify-center flex-col">
+        <h2 class="text-4xl mx-auto text-primary my-5">{t('hero.motto')}</h2>
+        <button class="bg-primary-dark text-light mx-auto px-4 py-1.5 rounded my-5 drop-shadow-md">{t('hero.appointment')}</button>
+        <h3 class="text-xl mx-auto my-5">{teaser}</h3>
+    </div>
+</div> 
