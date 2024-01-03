@@ -1,22 +1,12 @@
 ---
-import { defaultLang } from '../data/ui';
-import { useTranslations, getLangFromUrl } from '../data/utils';
-import LanguagePicker from './LanguagePicker';
+import Menu from "./Menu";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
+const url = Astro.url;
 ---
-<nav class='bg-primary-dark flex justify-center'>
-    <div class="justify-between w-2/3 flex text-light ">
-    <img src="/logo-small-light.svg" alt="Venaesthetics logo">
-    <div class="mx-14 flex">
-        <div class="my-auto mx-6 active:font-bold"><a href={lang === defaultLang ? '#competences' : `/${lang}/#competences`}>{t('links.competences')}</a></div>
-        <div class="my-auto mx-6"><a href={lang === defaultLang ? '#references' : `/${lang}/#references`}>{t('links.references')}</a></div>
-        <div class="my-auto mx-6"><a href={lang === defaultLang ? '#contact' : `/${lang}/#contact`}>{t('links.contact')}</a></div>
+
+<nav class="bg-primary-dark flex justify-center">
+    <div class="justify-between lg:w-2/3 w-full flex text-light mx-10">
+        <img src="/logo-small-light.svg" alt="Venaesthetics logo"/>
+        <Menu url={url} client:visible />
     </div>
-    <div class="my-auto">
-        <LanguagePicker url={Astro.url} client:visible/>
-    </div>
-</div>
 </nav>
