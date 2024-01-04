@@ -22,8 +22,9 @@ export const ui = {
         'hero.motto': 'Healthy and Beautiful Legs',
         'hero.appointment': 'Book Appointment',
 
-        'competences.title': 'Our Competences'
+        'competences.title': 'Our Competences',
 
+        'references.title': 'References'
     },
     de: {
         'links.competences': 'Kompetenzen',
@@ -33,6 +34,8 @@ export const ui = {
         'hero.motto': 'Gesunde und schöne Beine',
         'hero.appointment': 'Termin vereinbaren',
 
-        'competences.title': 'Unsere Kompetenzen'
+        'competences.title': 'Unsere Kompetenzen',
+
+        'references.title': 'Referenzen'
     }
 }
