@@ -2,7 +2,7 @@
 import type { Lang } from '../common/constants.ts';
 import Navigation from "./Navigation.astro";
 import Hero from "./Hero.astro";
-import Section from './Section.astro';
+import Section from '../layouts/Section.astro';
 import Competences from './sections/Competences.astro';
 import { useTranslations } from '../data/utils';
 import References from './sections/References.astro';
@@ -24,7 +24,6 @@ const t = useTranslations(lang);
    <Section title={t('references.title')} id="references">
 	<References />
 	</Section>	
-   
 </main>
 
 <style>
@@ -35,12 +34,5 @@ const t = useTranslations(lang);
 		max-width: calc(100% - 2rem);
 		font-size: 20px;
 		line-height: 1.6;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
 	}
 </style>

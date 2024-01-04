@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, Fragment } from "react";
-import { defaultLang, languages } from "../data/ui";
-import { getLangFromUrl, useTranslations } from "../data/utils";
+import { defaultLang } from "../../data/ui";
+import { getLangFromUrl, useTranslations } from "../../data/utils";
 import React from "react";
 import LanguagePicker from "./LanguagePicker";
 
