@@ -1,21 +1,10 @@
 ---
-import { buildClient, LogLevel } from '@datocms/cma-client-node';
 import { getLangFromUrl, useTranslations } from '../data/utils';
-
-const client = buildClient({ 
-    apiToken: import.meta.env.DATO_CMS_API_KEY,
-    logLevel: LogLevel.BASIC,
- });
+import { getItemsByFilter } from '../common/dato-client';
 
  const lang = getLangFromUrl(Astro.url);
- const records = await client.items.list({
-    filter: {
-      // you can also use models IDs instead of API keys!
-      type: 'teaser',
-    },
-    locale: lang
-  });
-const teaser = records[0].content[lang];
+ const records = await getItemsByFilter('teaser', lang);
+ const teaser = records[0].content[lang];
 
 const t = useTranslations(lang);
 ---

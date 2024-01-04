@@ -1,38 +1,39 @@
 ---
-import { buildClient, LogLevel } from "@datocms/cma-client-node";
 import { getLangFromUrl } from "../../data/utils";
+import { defaultLang } from "../../data/ui";
+import { getItemsByFilter, getUploadsByIds } from "../../common/dato-client";
 
-const client = buildClient({
-    apiToken: import.meta.env.DATO_CMS_API_KEY,
-    logLevel: LogLevel.BASIC,
- });
 const lang = getLangFromUrl(Astro.url);
+const records = await getItemsByFilter('reference', lang);
 
-const records = await client.items.list({
-    filter: {
-      type: 'reference',
-    },
-    locale: lang
-  });
-let items: {title: string, description: string, asset: any }[];
-const uploadIds = records.map(r => {return r.asset['upload_id']}).join(',');
-const uploads = await client.uploads.list({
-    filter: {
-        ids: uploadIds
-    }
-})
-items = records.map(r => { return { title: r.title[lang], description: r.description[lang], asset: uploads.find(u => u.id === r.asset['upload_id'])}});
-const podcast = items[0];
+let items: {id: string, title: string, description: string, asset: any }[];
+const uploadIds: string[] = records.map(r => {return `${r.asset['upload_id']}`});
+const uploads = await getUploadsByIds(uploadIds);
+
+items = records.map(r => { return { id: r.id, title: r.title[lang], description: r.description[lang], asset: uploads.find(u => u.id === r.asset['upload_id'])}});
+const podcast = items.find(i => i.id === 'Fa9vo1tvRuSEulLoyB7OMA');
+const article = items.find(i => i.id === 'bQwkfeQqTxStjokLWdjdEQ');
+article.description = article?.description.replace('REPLACEME', lang === defaultLang ? 'articles' : `${lang}/articles`);
+
 ---
-<div class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm">
+<div class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm mb-24">
     <div class="bg-primary text-light p-8 flex-1">
-        <h1 class="text-2xl">Podcast</h1>
-        <p set:html={podcast.description} class="mt-5 text-lg"></p>
+        <h1 class="text-2xl">{podcast?.title}</h1>
+        <p set:html={podcast?.description} class="mt-5 text-lg"></p>
     </div>
     <div class="flex-1 self-center mx-auto">
-      <audio class="mx-auto my-20" controls>
-        <source src={podcast.asset.url} type={podcast.asset['mime_type']} />
+      <audio class="mx-auto my-20" controls preload="metadata">
+        <source src={podcast?.asset.url} type={podcast?.asset['mime_type']} />
       </audio>
 
     </div>
 </div> 
+<div class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm w-full">
+    <div class="flex-1 self-center mx-auto">
+      <img class="mx-auto my-20" src={article?.asset.url} alt={article?.asset['smart_tags'].join(', ')}>
+    </div>
+    <div class="bg-primary text-light p-8 flex-1">
+        <h1 class="text-2xl">{article?.title}</h1>
+        <p set:html={article?.description} class="mt-5 text-lg"></p> 
+    </div>
+</div>
