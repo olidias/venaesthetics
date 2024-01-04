@@ -7,12 +7,13 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<div class="my-10 ">
-    <div class="h-14 bg-primary rounded-sm flex justify-center">
-        <h2 class="text-center text-light text-2xl align-middle flex self-center">
+<details class="my-10">
+    <summary class="h-14 bg-primary rounded-sm flex flex-row justify-items-center hover:cursor-pointer">
+        <h2 class="text-light text-2xl flex self-center mx-auto pl-3">
             {title}
         </h2>
-
-    </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="flex self-center mr-3" width="24" height="24" viewBox="-5 -7.5 24 24"><g transform="rotate(180 7 4.5)"><path fill="white" d="m7.071 2.828l-4.95 4.95A1 1 0 0 1 .707 6.364L6.364.707a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414z"/></g></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="hidden self-center mr-3" width="24" height="24" viewBox="-5 -7.5 24 24"><path fill="white" d="m7.071 2.828l-4.95 4.95A1 1 0 0 1 .707 6.364L6.364.707a1 1 0 0 1 1.414 0l5.657 5.657a1 1 0 0 1-1.414 1.414z"/></svg>
+    </summary>
     <div set:html={description} class="py-5 px-8 border-opacity-15 border border-dark rounded-b-sm text-lg" />
-</div>
+</details>
