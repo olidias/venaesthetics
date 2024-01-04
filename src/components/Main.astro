@@ -6,6 +6,7 @@ import Section from '../layouts/Section.astro';
 import Competences from './sections/Competences.astro';
 import { useTranslations } from '../data/utils';
 import References from './sections/References.astro';
+import Contact from './sections/Contact.astro';
 
 interface Props {
     lang: Lang;
@@ -23,7 +24,10 @@ const t = useTranslations(lang);
    </Section>
    <Section title={t('references.title')} id="references">
 	<References />
-	</Section>	
+   </Section>
+   <Section title={t('contact.title')} id="contact" >
+	<Contact />
+   </Section>
 </main>
 
 <style>

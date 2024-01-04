@@ -1,0 +1,27 @@
+---
+import { getItemsByFilter, getUploadsByIds } from "../../common/dato-client";
+import { getLangFromUrl } from "../../data/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const records = await getItemsByFilter('contact', lang);
+const contactRecord = records.find(r => r.id === 'CV2CdzpFSuWrU44V0YpNKw');
+let contact: {id: string, contactInfo: string, map: any };
+const m = await getUploadsByIds([contactRecord['map']['upload_id']]);
+console.log(m)
+contact = {
+    map: m,
+    contactInfo: contactRecord.contact,
+    ...contactRecord
+};
+console.log(contact['map'].url);
+---
+<div class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm w-full">
+    <div class="bg-primary text-light p-8 flex-1">
+        <p set:html={contact?.contact} class="mt-5 text-lg"></p> 
+    </div>
+    <div class="flex-1 self-center mx-auto">
+      <img class="mx-auto my-20" src={contact['map'].url} alt={contact['map'].basename}>
+    </div>
+
+</div>

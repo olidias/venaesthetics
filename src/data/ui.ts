@@ -24,7 +24,9 @@ export const ui = {
 
         'competences.title': 'Our Competences',
 
-        'references.title': 'References'
+        'references.title': 'References',
+
+        'contact.title': 'Contact'
     },
     de: {
         'links.competences': 'Kompetenzen',
@@ -36,6 +38,8 @@ export const ui = {
 
         'competences.title': 'Unsere Kompetenzen',
 
-        'references.title': 'Referenzen'
+        'references.title': 'Referenzen',
+
+        'contact.title': 'Kontakt'
     }
 }
