@@ -1,0 +1,38 @@
+---
+import { buildClient, LogLevel } from "@datocms/cma-client-node";
+import { getLangFromUrl } from "../../data/utils";
+
+const client = buildClient({
+    apiToken: import.meta.env.DATO_CMS_API_KEY,
+    logLevel: LogLevel.BASIC,
+ });
+const lang = getLangFromUrl(Astro.url);
+
+const records = await client.items.list({
+    filter: {
+      type: 'reference',
+    },
+    locale: lang
+  });
+let items: {title: string, description: string, asset: any }[];
+const uploadIds = records.map(r => {return r.asset['upload_id']}).join(',');
+const uploads = await client.uploads.list({
+    filter: {
+        ids: uploadIds
+    }
+})
+items = records.map(r => { return { title: r.title[lang], description: r.description[lang], asset: uploads.find(u => u.id === r.asset['upload_id'])}});
+const podcast = items[0];
+---
+<div class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm">
+    <div class="bg-primary text-light p-8 flex-1">
+        <h1 class="text-2xl">Podcast</h1>
+        <p set:html={podcast.description} class="mt-5 text-lg"></p>
+    </div>
+    <div class="flex-1 self-center mx-auto">
+      <audio class="mx-auto my-20" controls>
+        <source src={podcast.asset.url} type={podcast.asset['mime_type']} />
+      </audio>
+
+    </div>
+</div> 

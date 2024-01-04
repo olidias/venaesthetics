@@ -63,8 +63,8 @@ export default function Menu({ url }) {
                             : `/${lang}/#contact`}>{t("links.contact")}</a>
                 </div>
             </div>
-            <div className='md:hidden flex self-center hover:cursor-pointer ml-auto mr-2 mt-1' onClick={toggleMenu}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h14M5 12h14M5 7h14" /></svg>
+            <div className='md:hidden flex self-center hover:cursor-pointer ml-auto mr-2 mt-1' >
+                <svg xmlns="http://www.w3.org/2000/svg" onClick={toggleMenu} width="30" height="30" viewBox="0 0 30 30"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 17h14M5 12h14M5 7h14" /></svg>
             </div>
             <div className="my-auto">
                 <LanguagePicker url={url} />

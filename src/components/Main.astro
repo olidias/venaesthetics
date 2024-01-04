@@ -5,6 +5,7 @@ import Hero from "./Hero.astro";
 import Section from './Section.astro';
 import Competences from './sections/Competences.astro';
 import { useTranslations } from '../data/utils';
+import References from './sections/References.astro';
 
 interface Props {
     lang: Lang;
@@ -17,9 +18,12 @@ const t = useTranslations(lang);
 <Navigation />
 <main>
    <Hero />
-   <Section title={t('competences.title')}>
+   <Section title={t('competences.title')} id="competences">
 	<Competences />
    </Section>
+   <Section title={t('references.title')} id="references">
+	<References />
+	</Section>	
    
 </main>
 
