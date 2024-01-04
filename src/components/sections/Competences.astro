@@ -1,0 +1,27 @@
+---
+import { buildClient, LogLevel } from '@datocms/cma-client-node';
+import { getLangFromUrl } from '../../data/utils';
+import Competency from './Competency.astro';
+
+const client = buildClient({
+    apiToken: import.meta.env.DATO_CMS_API_KEY,
+    logLevel: LogLevel.BASIC,
+ });
+const lang = getLangFromUrl(Astro.url);
+
+const records = await client.items.list({
+    filter: {
+      type: 'competency',
+    },
+    locale: lang
+  });
+
+let items: {title: string, description: string}[];
+items = records.map(r => { return { title: r.title[lang], description: r.description[lang] }});
+---
+{items.map(i => 
+    (
+      <Competency title={i.title} description={i.description} />
+    )
+  )
+}

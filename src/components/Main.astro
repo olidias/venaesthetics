@@ -1,18 +1,25 @@
 ---
-import Card from "./Card.astro";
 import type { Lang } from '../common/constants.ts';
 import Navigation from "./Navigation.astro";
 import Hero from "./Hero.astro";
+import Section from './Section.astro';
+import Competences from './sections/Competences.astro';
+import { useTranslations } from '../data/utils';
 
 interface Props {
     lang: Lang;
 }
 
 const { lang } = Astro.props;
+
+const t = useTranslations(lang);
 ---
 <Navigation />
 <main>
    <Hero />
+   <Section title={t('competences.title')}>
+	<Competences />
+   </Section>
    
 </main>
 
