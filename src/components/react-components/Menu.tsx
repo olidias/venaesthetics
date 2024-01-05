@@ -44,12 +44,10 @@ export default function Menu({ url }) {
     return (
         <Fragment>
             <div className={`md:flex md:opacity-100 ${menuOpen ? 'flex-col absolute right-0 left-0 h-48 top-16 bg-primary-dark' : 'hidden relative'}`}>
-                <div className={`mx-11 ${menuOpen ? 'h-10 hover:bg-blend-darken mb-4  mt-6' : 'my-auto'}`}>
-                    <a onClick={toggleMenu}
+                    <a onClick={toggleMenu} className={`mx-11 h-full self-center flex items-center hover:bg-primary-darker hover:cursor-pointer ${menuOpen ? 'h-10  mb-4  mt-6' : 'my-auto'}`}
                         href={lang === defaultLang
                             ? "#competences"
                             : `/${lang}/#competences`}>{t("links.competences")}</a>
-                </div>
                 <div className={`mx-11 ${menuOpen ? 'h-10 hover:bg-blend-darken my-4' : 'my-auto'}`}>
                     <a onClick={toggleMenu}
                         href={lang === defaultLang

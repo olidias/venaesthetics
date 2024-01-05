@@ -2,13 +2,20 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			fontFamily: {
+				sans: ["Raleway", "Inter"],
+				raleway: ["Raleway"]
+			  },
+		},
 		colors: {
 			'primary-dark': '#24242E',
+			'primary-darker': '#14141E',
 			'primary': '#132892',
 			'dark': '#2F3161',
 			'light': '#FFFFFF'
-		}
+		},
+
 	},
 	plugins: [],
 }
