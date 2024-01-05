@@ -5,14 +5,20 @@ import { getLangFromUrl } from "../../data/utils";
 const lang = getLangFromUrl(Astro.url);
 
 const records = await getItemsByFilter("contact", lang);
-const contactRecord = records.find((r) => r.id === "CV2CdzpFSuWrU44V0YpNKw");
-let contact: { id: string; contactInfo: string; directions: any };
-const m = await getUploadsByIds([contactRecord.directions["upload_id"]]);
-contact = {
-    directions: m[0],
-    contactInfo: contactRecord.contact,
-};
+const contactRecord: any = records.find(
+    (r) => r.id === "CV2CdzpFSuWrU44V0YpNKw",
+);
+let contact: { id?: string; contactInfo?: string; directions?: any } = {};
+if (contactRecord) {
+    const m = await getUploadsByIds([contactRecord.directions?.["upload_id"]]);
+    contact = {
+        directions: m[0],
+        contactInfo: contactRecord?.contact,
+        id: contactRecord.id
+    };
+}
 ---
+
 <div
     class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm w-full text-lg"
 >
@@ -27,7 +33,9 @@ contact = {
             alt={contact.directions.basename}
         />
     </div>
-    <dialog class="backdrop:bg-black/50 backdrop:backdrop-blur-lg overflow-y-hidden">
+    <dialog
+        class="backdrop:bg-black/50 backdrop:backdrop-blur-lg overflow-y-hidden"
+    >
         <button autofocus class="absolute right-2">&times;</button>
         <img
             class="w-[100vw] m-auto md:w-2/3"
