@@ -7,6 +7,7 @@ import Competences from './sections/Competences.astro';
 import { useTranslations } from '../data/utils';
 import References from './sections/References.astro';
 import Contact from './sections/Contact.astro';
+import Footer from './Footer.astro';
 
 interface Props {
     lang: Lang;
@@ -17,7 +18,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 <Navigation />
-<main>
+<main class="md:w-2/3 w-full m-auto p-1">
    <Hero />
    <Section title={t('competences.title')} id="competences">
 	<Competences />
@@ -30,13 +31,4 @@ const t = useTranslations(lang);
    </Section>
 </main>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		font-size: 20px;
-		line-height: 1.6;
-	}
-</style>
+<Footer />
