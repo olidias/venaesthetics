@@ -1,0 +1,17 @@
+---
+import { getLangFromUrl } from '../../data/utils';
+import Competency from './Competency.astro';
+import { getItemsByFilter } from '../../common/dato-client';
+
+const lang = getLangFromUrl(Astro.url);
+const records = await getItemsByFilter('competency', lang);
+
+let items: {title: string, description: string}[];
+items = records.map(r => { return { title: r.title[lang], description: r.description[lang] }});
+---
+{items.map(i => 
+    (
+      <Competency title={i.title} description={i.description} />
+    )
+  )
+}

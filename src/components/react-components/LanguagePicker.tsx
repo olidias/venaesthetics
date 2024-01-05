@@ -1,6 +1,6 @@
-import { languages } from "../data/ui";
+import { languages } from "../../data/ui";
 import { Icon } from "@iconify/react";
-import { getLangFromUrl } from "../data/utils";
+import { getLangFromUrl } from "../../data/utils";
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 

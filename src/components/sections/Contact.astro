@@ -1,0 +1,54 @@
+---
+import { getItemsByFilter, getUploadsByIds } from "../../common/dato-client";
+import { getLangFromUrl } from "../../data/utils";
+
+const lang = getLangFromUrl(Astro.url);
+
+const records = await getItemsByFilter("contact", lang);
+const contactRecord = records.find((r) => r.id === "CV2CdzpFSuWrU44V0YpNKw");
+let contact: { id: string; contactInfo: string; directions: any };
+const m = await getUploadsByIds([contactRecord.directions["upload_id"]]);
+contact = {
+    directions: m[0],
+    contactInfo: contactRecord.contact,
+};
+---
+<div
+    class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm w-full text-lg"
+>
+    <div class="bg-primary text-light p-8 flex-1">
+        <p set:html={contact?.contactInfo} class="mt-5 text-lg" />
+    </div>
+    <div class="flex-1 self-center mx-auto">
+        <img
+            class="mx-auto hover:cursor-pointer bg-cover"
+            id="dialog-img"
+            src={contact.directions.url}
+            alt={contact.directions.basename}
+        />
+    </div>
+    <dialog class="backdrop:bg-black/50 backdrop:backdrop-blur-lg overflow-y-hidden">
+        <button autofocus class="absolute right-2">&times;</button>
+        <img
+            class="w-[100vw] m-auto md:w-2/3"
+            id="dialog-img"
+            src={contact.directions.url}
+            alt={contact.directions.basename}
+        />
+    </dialog>
+</div>
+<script>
+    const dialog = document.querySelector("dialog");
+    const showButton = document.getElementById("dialog-img");
+    const closeButton = document.querySelector("dialog button");
+
+    // "Show the dialog" button opens the dialog modally
+    showButton?.addEventListener("click", () => {
+        dialog?.showModal();
+    });
+
+    // "Close" button closes the dialog
+    closeButton?.addEventListener("click", () => {
+        dialog?.close();
+    });
+</script>
