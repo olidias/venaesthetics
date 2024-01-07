@@ -15,6 +15,8 @@ export const defaultLang = 'de';
 
 export const ui = {
     en: {
+        'main.title': 'Venaesthetics - Vein Care in Zürich',
+
         'links.competences': 'Competences',
         'links.references': 'References',
         'links.contact': 'Contact',
@@ -26,9 +28,13 @@ export const ui = {
 
         'references.title': 'References',
 
-        'contact.title': 'Contact'
+        'contact.title': 'Contact',
+
+        'articles.title': 'Articles',
     },
     de: {
+        'main.title': 'Venaesthetics - Venenpflege in Zürich',
+
         'links.competences': 'Kompetenzen',
         'links.references': 'Referenzen',
         'links.contact': 'Kontakt',
@@ -40,6 +46,9 @@ export const ui = {
 
         'references.title': 'Referenzen',
 
-        'contact.title': 'Kontakt'
+        'contact.title': 'Kontakt',
+
+        'articles.title': 'Fachartikel',
+
     }
 }

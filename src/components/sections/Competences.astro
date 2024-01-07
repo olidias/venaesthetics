@@ -9,9 +9,9 @@ const records: any = await getItemsByFilter('competency', lang);
 let items: {title: string, description: string}[];
 items = records.map((r: any) => { return { title: r.title[lang], description: r.description[lang] }});
 ---
-{items.map(i => 
+{items.map((item, i) => 
     (
-      <Competency title={i.title} description={i.description} />
+      <Competency title={item.title} description={item.description} openDetails={i==0}/>
     )
   )
 }

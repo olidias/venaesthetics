@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl } from "../../data/utils";
-import { defaultLang } from "../../data/ui";
 import { getItemsByFilter, getUploadsByIds } from "../../common/dato-client";
 
 const lang = getLangFromUrl(Astro.url);
@@ -25,7 +24,7 @@ const article = items.find((i) => i.id === "bQwkfeQqTxStjokLWdjdEQ");
 if (article) {
   article.description = article?.description?.replace(
     "REPLACEME",
-    lang === defaultLang ? "articles" : `${lang}/articles`,
+    `${lang}/articles`,
   );
 }
 ---

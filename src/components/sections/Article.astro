@@ -1,0 +1,8 @@
+---
+import { getLangFromUrl, useTranslations } from '../../data/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+const t = useTranslations(lang);
+---
+<h1>{t('articles.title')}</h1>

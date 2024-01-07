@@ -2,12 +2,13 @@
 interface Props {
     title: string;
     description: string;
+    openDetails: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, openDetails } = Astro.props;
 ---
 
-<details class="my-10">
+<details class="my-10" open={openDetails}>
     <summary
         class="h-14 bg-primary rounded-sm flex flex-row justify-items-center hover:cursor-pointer"
     >
