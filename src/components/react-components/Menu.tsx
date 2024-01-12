@@ -12,25 +12,19 @@ export default function Menu({ url }) {
 
     const [menuOpen, setMenuOpen] = useState(false);
     function toggleMenu() {
-        setIsComponentVisible(true);
         setMenuOpen(!menuOpen);
     }
 
-    const [isComponentVisible, setIsComponentVisible] = useState(true);
     const ref = useRef(null);
 
     const handleHideDropdown = (event: KeyboardEvent) => {
         if (event.key === "Escape") {
-            setIsComponentVisible(false);
             setMenuOpen(false);
         }
     };
 
     const handleClickOutside = (event: MouseEvent) => {
-        if (ref.current && !ref.current.contains(event.target)) {
-            setIsComponentVisible(false);
-            setMenuOpen(false);
-        }
+        setMenuOpen(false);
     };
 
     useEffect(() => {
@@ -51,7 +45,6 @@ export default function Menu({ url }) {
                     href={lang === defaultLang
                         ? "/#competences"
                         : `/${lang}/#competences`}
-                    toggleMenu={toggleMenu}
                     linkText={t("links.competences")}
                     menuOpen={menuOpen}
                 />
@@ -61,7 +54,6 @@ export default function Menu({ url }) {
                     href={lang === defaultLang
                         ? "/#references"
                         : `/${lang}/#references`}
-                    toggleMenu={toggleMenu}
                     linkText={t("links.references")}
                     menuOpen={menuOpen}
                 />
@@ -69,7 +61,6 @@ export default function Menu({ url }) {
                     defaultLang={defaultLang}
                     lang={lang}
                     href={`/${lang}/articles`}
-                    toggleMenu={toggleMenu}
                     linkText={t("links.articles")}
                     menuOpen={menuOpen}
                 />
@@ -79,7 +70,6 @@ export default function Menu({ url }) {
                     href={lang === defaultLang
                         ? "/#contact"
                         : `/${lang}/#contact`}
-                    toggleMenu={toggleMenu}
                     linkText={t("links.contact")}
                     menuOpen={menuOpen}
                 />

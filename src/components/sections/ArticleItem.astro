@@ -13,7 +13,7 @@ const { title, date, callToAction, documentUrl, assetUrl } = Astro.props;
         <div class="flex md:w-2/3 w-full flex-col lg:p-10 p-5">
             <h3 class="font-bold lg:text-xl">{title}</h3>
             <p class="italic mt-1">{date?.toLocaleDateString('de-CH')}</p>
-            <a class="md:mt-auto mt-3 underline lg:text-lg" href={documentUrl}
+            <a class="md:mt-auto mt-3 underline lg:text-lg" href={documentUrl} target="_blank"
                 >{callToAction}</a
             >
         </div>
