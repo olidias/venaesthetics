@@ -13,7 +13,6 @@ export default function LanguagePicker({ url }) {
     setIsComponentVisible(true);
     setMenuOpen(!menuOpen);
   }
-  console.log(url);
   const lang = languages.find(l => l.key === getLangFromUrl(url));
 
   const [isComponentVisible, setIsComponentVisible] = useState(true);
