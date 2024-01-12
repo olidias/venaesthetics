@@ -1,0 +1,28 @@
+---
+import { languages } from '../../data/ui';
+import { useTranslations } from '../../data/utils';
+import Layout from '../../layouts/Layout.astro';
+import { Lang } from '../../common/constants';
+import Footer from '../../components/Footer.astro';
+import Hero from '../../components/Hero.astro';
+import Navigation from '../../components/Navigation.astro';
+import Article from '../../components/sections/Article.astro';
+
+
+export function getStaticPaths () {
+    return languages.map(l => { return { params: { lang: l.key }}});
+}
+
+const { lang } = Astro.params;
+const castedLang = lang as Lang;
+const t = useTranslations(castedLang);
+---
+<Layout title={t('main.title')}>
+        
+    <Navigation />
+    <main class="md:w-2/3 w-full m-auto p-1 font-raleway">
+        <Hero teaserVisible={false} />
+        <Article />
+    </main>
+    <Footer />
+</Layout>

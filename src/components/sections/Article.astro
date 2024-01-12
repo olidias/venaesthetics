@@ -1,0 +1,45 @@
+---
+import { getItemsByFilter, getUploadsByIds } from "../../common/dato-client";
+import { getLangFromUrl, useTranslations } from "../../data/utils";
+import ArticleItem from "./ArticleItem.astro";
+
+const lang = getLangFromUrl(Astro.url);
+
+const t = useTranslations(lang);
+
+const articles = await getItemsByFilter("article", lang);
+const uploadIds: string[] = articles.flatMap((a: any) => {
+    const assetsIds = a.asset.map((ass: any) => {
+        return `${ass["upload_id"]}`;
+    });
+    const coverImgIds = a.coverimage["upload_id"];
+    return [...assetsIds, coverImgIds];
+});
+const uploads = await getUploadsByIds(uploadIds);
+const items = articles.map((item: any) => {
+    return {
+        ...item,
+        title: item.title[lang],
+        callToAction: item.calltoaction[lang],
+        document: uploads.find((u) => u.id === item.asset[0]["upload_id"]),
+        coverImage: uploads.find((u) => u.id === item.coverimage["upload_id"]),
+        date: new Date(item.date),
+    };
+});
+---
+<h1 class="text-3xl mx-auto justify-center flex font-semibold text-dark my-14">
+    {t("articles.title")}
+</h1>
+<div class="gap-9 flex flex-col mb-16">
+    {
+        items.map((a) => (
+            <ArticleItem
+                title={a.title}
+                date={a.date}
+                documentUrl={a.document.url}
+                callToAction={a.callToAction}
+                assetUrl={a.coverImage.url}
+            />
+        ))
+    }
+</div>

@@ -3,6 +3,9 @@ import { Icon } from "@iconify/react";
 import { getLangFromUrl } from "../../data/utils";
 import { useState, useEffect, useRef } from "react";
 import React from "react";
+import { replaceLangInUrl } from '../../common/url-helper';
+import type { Lang } from "../../common/constants";
+
 
 export default function LanguagePicker({ url }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,7 +70,7 @@ export default function LanguagePicker({ url }) {
             {languages.map((language, i) => (
               <a
                 key={i}
-                href={`/${language.key}`}
+                href={replaceLangInUrl(url, language.key as Lang)}
                 className="text-gray-700 px-4 py-2 text-sm flex justify-items-start hover:bg-gray-100"
                 role="menuitem"
                 tabIndex="-1"

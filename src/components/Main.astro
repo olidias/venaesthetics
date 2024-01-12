@@ -18,8 +18,8 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 <Navigation />
-<main class="md:w-2/3 w-full m-auto p-1">
-   <Hero />
+<main class="md:w-2/3 w-full m-auto p-4 font-raleway">
+   <Hero teaserVisible={true} />
    <Section title={t('competences.title')} id="competences">
 	<Competences />
    </Section>
