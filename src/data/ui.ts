@@ -19,6 +19,7 @@ export const ui = {
 
         'links.competences': 'Competences',
         'links.references': 'References',
+        'links.articles': 'Articles',
         'links.contact': 'Contact',
 
         'hero.motto': 'Healthy and Beautiful Legs',
@@ -37,6 +38,7 @@ export const ui = {
 
         'links.competences': 'Kompetenzen',
         'links.references': 'Referenzen',
+        'links.articles': 'Fachartikel',
         'links.contact': 'Kontakt',
 
         'hero.motto': 'Gesunde und schöne Beine',
