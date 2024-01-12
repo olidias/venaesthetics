@@ -13,16 +13,17 @@ const t = useTranslations(lang);
 ---
 
 <div class="mt-28 mx-auto flex flex-col">
-    <img src="/logo-full.svg" alt="large logo venaesthetics" />
+    <img src="/logo-full.svg" alt="large logo venaesthetics" class="hidden md:block" />
+    <img src="/logo-single.svg" alt="large simplified logo venaesthetics" class="md:hidden" />
     <div class="flex justify-center flex-col">
-        <h2 class="text-4xl mx-auto text-primary my-5">{t("hero.motto")}</h2>
+        <h2 class="lg:text-4xl text-2xl mx-auto text-primary my-5">{t("hero.motto")}</h2>
         <button
             class="bg-primary-dark text-light mx-auto px-4 py-1.5 rounded my-5 drop-shadow-md hover:drop-shadow-xl hover:brightness-110"
             >{t("hero.appointment")}</button
         >
-        <h3 class="text-xl mx-auto my-5">{teaser}</h3>
+        <h3 class="md:text-xl text-lg mx-auto my-5">{teaser}</h3>
     </div>
 
-    <hr class="mx-auto w-1/2 my-16" />
+    <hr class="mx-auto w-1/2 lg:my-16 mt-16" />
 </div>
 

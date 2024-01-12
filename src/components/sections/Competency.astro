@@ -12,7 +12,7 @@ const { title, description, openDetails } = Astro.props;
     <summary
         class="h-14 bg-primary rounded-sm flex flex-row justify-items-center hover:cursor-pointer"
     >
-        <h2 class="text-light text-2xl flex self-center mx-auto pl-3">
+        <h2 class="text-light md:text-2xl text-xl flex self-center mx-auto pl-3">
             {title}
         </h2>
         <svg
@@ -42,7 +42,7 @@ const { title, description, openDetails } = Astro.props;
     </summary>
     <div
         set:html={description}
-        class="py-5 px-8 border-opacity-15 border border-dark rounded-b-sm text-lg"
+        class="py-5 px-8 border-opacity-15 border border-dark rounded-b-sm md:text-lg"
     />
 </details>
 
