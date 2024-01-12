@@ -6,7 +6,11 @@ export default {
 			fontFamily: {
 				sans: ["Raleway", "Inter"],
 				raleway: ["Raleway"]
-			  },
+			},
+			backgroundImage: {
+				'hero': "linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1)), url('/hero-background.webp')",
+			},
+
 		},
 		colors: {
 			'primary-dark': '#24242E',
