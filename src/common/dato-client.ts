@@ -6,7 +6,8 @@ export async function getItemsByFilter(filter: string, lang: Lang) {
         filter: {
           type: filter,
         },
-        locale: lang
+        locale: lang,
+        
       });
 }
 

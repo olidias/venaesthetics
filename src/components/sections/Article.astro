@@ -1,8 +1,43 @@
 ---
-import { getLangFromUrl, useTranslations } from '../../data/utils';
+import { getItemsByFilter, getUploadsByIds } from "../../common/dato-client";
+import { getLangFromUrl, useTranslations } from "../../data/utils";
+import ArticleItem from "./ArticleItem.astro";
 
 const lang = getLangFromUrl(Astro.url);
 
 const t = useTranslations(lang);
+
+const articles = await getItemsByFilter("article", lang);
+const uploadIds: string[] = articles.flatMap((a: any) => {
+    return a.asset.map((ass:any) =>{ return `${ass['upload_id']}`}); // asset & coverImage property to get uploadId
+});
+console.log(uploadIds);
+const uploades = await getUploadsByIds(uploadIds);
+console.log(articles)
+const items = articles.map((r: any) => {
+    return {
+        ...r,
+        title: r.title[lang],
+        callToAction: r.calltoaction[lang],
+        document: uploades.find((u) => u.id === r.asset[0]["upload_id"]),
+        
+    };
+});
 ---
-<h1>{t('articles.title')}</h1>
+
+<h1 class="text-3xl mx-auto justify-center flex font-semibold text-dark my-14">
+    {t("articles.title")}
+</h1>
+<div class="gap-9 flex flex-col mb-16">
+    {
+        items.map((a) => (
+            <ArticleItem
+                title={a.title}
+                date={a.date}
+                documentUrl={a.document.url}
+                callToAction={a.callToAction}
+                assetUrl='/'
+            />
+        ))
+    }
+</div>

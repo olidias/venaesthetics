@@ -17,7 +17,9 @@ export default {
 			'primary-darker': '#14141E',
 			'primary': '#132892',
 			'dark': '#2F3161',
-			'light': '#FFFFFF'
+			'light': '#FFFFFF',
+			'light-background': '#FAFBFF',
+			'outline-dark': 'hsla(223, 59%, 21%, 0.31)'
 		},
 
 	},
