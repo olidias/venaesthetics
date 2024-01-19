@@ -8,12 +8,14 @@ const records = await getItemsByFilter("contact", lang);
 const contactRecord: any = records.find(
     (r) => r.id === "CV2CdzpFSuWrU44V0YpNKw",
 );
-let contact: { id?: string; contactInfo?: string; directions?: any } = {};
+let contact: { id?: string; contactInfo?: string; directions?: any, contactImage?: any } = {};
 if (contactRecord) {
-    const m = await getUploadsByIds([contactRecord.directions?.["upload_id"]]);
+    const contactImage = await getUploadsByIds([contactRecord.contactimage?.["upload_id"]]);
+    const directionsImage = await getUploadsByIds([contactRecord.directions?.["upload_id"]]);
     contact = {
-        directions: m[0],
+        directions: directionsImage[0],
         contactInfo: contactRecord?.contact,
+        contactImage: contactImage[0],
         id: contactRecord.id
     };
 }
@@ -22,8 +24,11 @@ if (contactRecord) {
 <div
     class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm w-full text-lg"
 >
-    <div class="bg-primary text-light p-8 flex-1">
-        <p set:html={contact?.contactInfo} class="mt-5 text-lg" />
+    <div class="bg-primary text-light p-8 flex-1 flex-col flex">
+        <img class="mx-auto hover:cursor-pointer bg-cover my-auto max-w-[200px] max-h-[200px]"
+            src={contact.contactImage.url}
+            alt={contact.contactImage.basename} />
+        <div set:html={contact?.contactInfo} class="mt-5 text-lg flex-1" />
     </div>
     <div class="flex-1 self-center mx-auto">
         <img
