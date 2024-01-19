@@ -24,11 +24,11 @@ if (contactRecord) {
 <div
     class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm w-full text-lg"
 >
-    <div class="bg-primary text-light p-8 flex-1 flex-col flex">
-        <img class="mx-auto bg-cover my-auto max-w-[200px] max-h-[200px]"
+    <div class="bg-primary text-light flex-1 flex-col flex">
+        <img class="mx-auto bg-cover my-auto max-w-[200px] max-h-[200px] pt-8 px-8"
             src={contact.contactImage.url}
             alt={contact.contactImage.basename} />
-        <div set:html={contact?.contactInfo} class="mt-5 text-lg flex-1 mx-auto" />
+        <div set:html={contact?.contactInfo} class="mt-5 text-lg flex-1 mx-auto px-8" />
     </div>
     <div class="flex-1 self-center mx-auto">
         <img

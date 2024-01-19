@@ -32,9 +32,9 @@ if (article) {
 <div
   class="md:flex justify-stretch border border-opacity-15 border-dark rounded-b-sm mb-24"
 >
-  <div class="bg-primary text-light p-8 flex-1">
-    <h1 class="lg:text-2xl text-xl">{podcast?.title}</h1>
-    <p set:html={podcast?.description} class="mt-5 lg:text-lg" />
+  <div class="bg-primary text-light flex-1">
+    <h1 class="lg:text-2xl text-xl pt-8 px-8">{podcast?.title}</h1>
+    <p set:html={podcast?.description} class="mt-5 lg:text-lg  px-8 " />
   </div>
   <div class="flex-1 self-center mx-auto">
     <audio class="mx-auto my-20" controls preload="metadata">
@@ -47,13 +47,13 @@ if (article) {
 >
   <div class="flex-1 self-center mx-auto">
     <img
-      class="mx-auto my-20"
+      class="mx-auto w-full bg-cover"
       src={article?.asset.url}
       alt={article?.asset["smart_tags"].join(", ")}
     />
   </div>
-  <div class="bg-primary text-light p-8 flex-1">
-    <h1 class="lg:text-2xl text-xl">{article?.title}</h1>
-    <div set:html={article?.description} class="mt-5 lg:text-lg text-base" />
+  <div class="bg-primary text-light flex-1">
+    <h1 class="lg:text-2xl text-xl pt-8 px-8">{article?.title}</h1>
+    <div set:html={article?.description} class="mt-5 lg:text-lg text-base px-8 " />
   </div>
 </div> 
