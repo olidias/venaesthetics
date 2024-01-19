@@ -25,7 +25,7 @@ const items = articles.map((item: any) => {
         coverImage: uploads.find((u) => u.id === item.coverimage["upload_id"]),
         date: new Date(item.date),
     };
-});
+}).sort((a,b) => b.date - a.date);
 ---
 <h1 class="text-3xl mx-auto justify-center flex font-semibold text-dark my-14">
     {t("articles.title")}
