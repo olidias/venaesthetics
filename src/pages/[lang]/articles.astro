@@ -7,7 +7,7 @@ import Footer from '../../components/Footer.astro';
 import Hero from '../../components/Hero.astro';
 import Navigation from '../../components/Navigation.astro';
 import Article from '../../components/sections/Article.astro';
-
+import { AstroSeo } from '@astrolib/seo';
 
 export function getStaticPaths () {
     return languages.map(l => { return { params: { lang: l.key }}});
@@ -17,8 +17,36 @@ const { lang } = Astro.params;
 const castedLang = lang as Lang;
 const t = useTranslations(castedLang);
 ---
+
+<AstroSeo
+  title={t('main.title')}
+  description={t('seo.articles.description')}
+  canonical=`https://www.venaesthetics.ch/${lang}/articles`
+  openGraph={{
+    url: `https://www.venaesthetics.ch/${lang}/articles`,
+    title: 'Venaesthetics',
+    description: t('seo.articles.description'),
+    images: [
+      {
+        url: 'https://www.venaesthetics.ch/logo-full.svg',
+        width: 800,
+        height: 600,
+        alt: 'Venaesthetics Logo Full',
+        type: 'image/svg',
+      },
+      {
+        url: 'https://www.venaesthetics.ch/logo-small-light.svg',
+        width: 900,
+        height: 800,
+        alt: 'Venaesthetics Logo Small',
+        type: 'image/svg',
+      },
+      { url: 'https://www.venaesthetics.ch/logo-small.svg' },
+    ],
+    site_name: 'Venaesthetics',
+  }} />
+  
 <Layout title={t('main.title')}>
-        
     <Navigation />
     <main class="md:w-2/3 w-full m-auto p-1 font-raleway">
         <Hero teaserVisible={false} />
