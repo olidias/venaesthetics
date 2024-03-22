@@ -1,8 +1,37 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Main from '../components/Main.astro';
+import { AstroSeo } from '@astrolib/seo';
 ---
 
+<AstroSeo
+  title="Venaesthetics - Venenpflege in Zürich"
+  description="Dr. Stephan Koeferli - Ihr Venenspezialist in Zürich."
+  canonical="https://www.venaesthetics.ch/"
+  openGraph={{
+    url: 'https://www.venaesthetics.ch/',
+    title: 'Venaesthetics',
+    description: 'Venaesthetics Venenspezialist',
+    images: [
+      {
+        url: 'https://www.venaesthetics.ch/logo-full.svg',
+        width: 800,
+        height: 600,
+        alt: 'Venaesthetics Logo Full',
+        type: 'image/svg',
+      },
+      {
+        url: 'https://www.venaesthetics.ch/logo-small-light.svg',
+        width: 900,
+        height: 800,
+        alt: 'Venaesthetics Logo Small',
+        type: 'image/svg',
+      },
+      { url: 'https://www.venaesthetics.ch/logo-small.svg' },
+    ],
+    site_name: 'Venaesthetics',
+  }}
+/>
 <Layout title="Venaesthetics - Venenpflege in Zürich">
 	<Main lang='de' />
 </Layout>

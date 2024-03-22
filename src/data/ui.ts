@@ -33,7 +33,9 @@ export const ui = {
 
         'articles.title': 'Articles',
 
-        'misc.mailTemplate': 'mailto:info@vz-zh.ch?subject=Appointment%20Request&body=Dear%20Venaesthetics%0AI%20would%20like%20to%20make%20an%20appointment.%20Please%20get%20in%20contact%20as%20soon%20as%20possible.%0AThank%20you%20and%20best%20regards,%0A'
+        'misc.mailTemplate': 'mailto:info@vz-zh.ch?subject=Appointment%20Request&body=Dear%20Venaesthetics%0AI%20would%20like%20to%20make%20an%20appointment.%20Please%20get%20in%20contact%20as%20soon%20as%20possible.%0AThank%20you%20and%20best%20regards,%0A',
+
+        'seo.articles.description': 'Publications and articles of vein specialist Dr. Stephan Koeferli'
     },
     de: {
         'main.title': 'Venaesthetics - Venenpflege in Zürich',
@@ -54,6 +56,9 @@ export const ui = {
 
         'articles.title': 'Fachartikel',
 
-        'misc.mailTemplate': `mailto:info@vz-zh.ch?subject=Terminanfrage&body=Guten%20Tag%0AIch%20würde%20gerne%20einen%20Termin%20vereinbaren.%20Bitte%20kontaktieren%20Sie%20mich%20so%20bald%20wie%20möglich.%0AVielen%20Dank%20und%20freundliche%20Grüsse`
+        'misc.mailTemplate': `mailto:info@vz-zh.ch?subject=Terminanfrage&body=Guten%20Tag%0AIch%20würde%20gerne%20einen%20Termin%20vereinbaren.%20Bitte%20kontaktieren%20Sie%20mich%20so%20bald%20wie%20möglich.%0AVielen%20Dank%20und%20freundliche%20Grüsse`,
+
+        
+        'seo.articles.description': 'Publikationen und Artikel von Dr. Stephan Koeferli'
     }
 }
