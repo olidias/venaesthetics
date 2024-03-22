@@ -7,8 +7,7 @@ interface Props {
 
 const { title, description, openDetails } = Astro.props;
 ---
-
-<details class="my-10" open={openDetails}>
+<details class="my-10 toggleCompetency" open={openDetails}>
     <summary
         class="h-14 bg-primary rounded-sm flex flex-row justify-items-center hover:cursor-pointer"
     >
@@ -17,7 +16,8 @@ const { title, description, openDetails } = Astro.props;
         </h2>
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="flex self-center mr-3"
+            class=`self-center mr-3`
+            id="openChevron"
             width="24"
             height="24"
             viewBox="-5 -7.5 24 24"
@@ -30,7 +30,8 @@ const { title, description, openDetails } = Astro.props;
         >
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="hidden self-center mr-3"
+            class=`self-center mr-3`
+            id="closeChevron"
             width="24"
             height="24"
             viewBox="-5 -7.5 24 24"
@@ -45,11 +46,22 @@ const { title, description, openDetails } = Astro.props;
         class="py-5 px-8 border-opacity-15 border border-dark rounded-b-sm md:text-lg"
     />
 </details>
-
 <style>
     details[open] > div {
         animation-name: fadeInDown;
         animation-duration: 0.5s;
+    }
+    details[open] #closeChevron {
+        display: flex;
+    }
+    details[open] #openChevron {
+        display: none;
+    }
+    details #closeChevron {
+        display: none;
+    }
+    details  #openChevron {
+        display: flex;
     }
     details > div {
         transition: height 1s ease;
