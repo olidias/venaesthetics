@@ -34,7 +34,7 @@ if (article) {
 >
   <div class="bg-primary text-light flex-1">
     <h1 class="lg:text-2xl text-xl pt-8 px-8">{podcast?.title}</h1>
-    <p set:html={podcast?.description} class="mt-5 lg:text-lg  px-8 " />
+    <p set:html={podcast?.description} class="mt-5 lg:text-lg px-8 pb-8 " />
   </div>
   <div class="flex-1 self-center mx-auto">
     <audio class="mx-auto my-20" controls preload="metadata">
@@ -54,6 +54,6 @@ if (article) {
   </div>
   <div class="bg-primary text-light flex-1">
     <h1 class="lg:text-2xl text-xl pt-8 px-8">{article?.title}</h1>
-    <div set:html={article?.description} class="mt-5 lg:text-lg text-base px-8 " />
+    <div set:html={article?.description} class="mt-5 lg:text-lg text-base px-8 pb-8" />
   </div>
 </div> 
