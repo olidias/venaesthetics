@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://venaesthetics.ch/sitemap-index.xml
