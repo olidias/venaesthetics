@@ -38,7 +38,7 @@ export default function Menu({ url }) {
 
     return (
         <Fragment>
-            <div className={`md:flex md:opacity-100 md:gap-2 lg:gap-5 ${menuOpen ? 'flex flex-col absolute items-center justify-center right-0 left-0 h-60 top-16 bg-primary-dark' : 'hidden relative'}`}>
+            <div className={`md:flex md:gap-2 bg-black lg:gap-5 ${menuOpen ? 'flex flex-col absolute items-center justify-center bg-light right-0 left-0 top-0 pt-16' : 'hidden relative'}`}>
                 <MenuItem
                     defaultLang={defaultLang}
                     lang={lang}
