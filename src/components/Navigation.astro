@@ -7,13 +7,13 @@ const url = Astro.url;
 const lang = getLangFromUrl(url);
 ---
 
-<nav class="bg-primary-dark flex justify-center">
-    <div class="justify-between lg:w-2/3 flex w-full text-light mx-10">
-        <a href={lang === defaultLang ? "/" : `/${lang}`} class="min-w-[60px]">
+<nav class="bg-white flex justify-center">
+    <div class="justify-between lg:w-2/3 flex w-full  mx-5">
+        <a href={lang === defaultLang ? "/" : `/${lang}`} class="min-w-[60px] z-10">
             <img
-                src="/logo-small-light.svg"
+                src="/logo-small.svg"
                 alt="Venaesthetics logo"
-                class="mb-1"
+                class="my-1"
             />
         </a>
         <Menu url={url} client:visible />

@@ -19,6 +19,7 @@ export default {
 			'dark': '#2F3161',
 			'light': '#FFFFFF',
 			'light-background': '#FAFBFF',
+			'light-footer-background': '#F3F4F9',
 			'outline-dark': 'hsla(223, 59%, 21%, 0.31)'
 		},
 

@@ -8,6 +8,7 @@ import type { Lang } from "../../common/constants";
 
 
 export default function LanguagePicker({ url }) {
+
   const [menuOpen, setMenuOpen] = useState(false);
   function toggleMenu() {
     setIsComponentVisible(true);
@@ -59,7 +60,7 @@ export default function LanguagePicker({ url }) {
         <div
           className={`${
             menuOpen ? "" : "hidden"
-          } absolute right-0 z-10 mt-2 w-48 origin-top-right divide-y divide-gray-100 rounded-md bg-primary-dark shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+          } absolute right-0 z-10 mt-2 w-48 origin-top-right divide-y divide-gray-100 rounded-md bg-light shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           id="languageDropdown"
           role="menu"
           aria-orientation="vertical"
@@ -71,7 +72,7 @@ export default function LanguagePicker({ url }) {
               <a
                 key={i}
                 href={replaceLangInUrl(url, language.key as Lang)}
-                className="text-gray-700 px-4 py-2 text-sm flex justify-items-start hover:bg-gray-100"
+                className="text-gray-700 px-4 py-2 text-sm flex justify-items-start hover:bg-outline-dark"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-0"
